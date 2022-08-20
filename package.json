@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/edutrabr/prompt-read/issues"
   },
-  "homepage": "https://github.com/edutrabr/prompt-read#readme"
+  "homepage": "https://github.com/edutrabr/prompt-read#readme",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
 }
