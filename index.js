@@ -32,4 +32,4 @@ function prompt(message, returnedType) {
     return result
 }
 
-module.exports = { prompt }
+module.exports = prompt
