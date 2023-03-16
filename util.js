@@ -7,8 +7,8 @@
 
 // Function strtoarray
 // Convert strings to array of type
-function strtoarray(str,type) {
-    var result = str.split(" ")
+const strtoarray = (str,type) => {
+    let result = str.split(" ")
     
     if (type == "Number") {
         result = result.map(Number)
@@ -17,8 +17,7 @@ function strtoarray(str,type) {
     return result
 }
 
-function strtonum(str) {
-    return parseFloat(str)
-}
+const strtonum = (str) => parseFloat(str)
 
-module.exports = { strtoarray, strtonum }
+
+export { strtoarray, strtonum }

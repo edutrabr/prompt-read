@@ -4,25 +4,27 @@
 // Author: Prof. Elmário Dutra
 // Version: 2021.03.24
 //
-const util = require("./util")
+import { strtoarray, strtonum } from  "./util.js"
+import asyncPrompt from "prompt-sync"
 //const str = 0
 //const number = 1
 //const arrayofstr = 2
 //const arrayofnumber = 3
 
-function prompt(message, returnedType) {
-    const prompt = require('prompt-sync')()
+const prompt = (message, returnedType) => {
+    const prompt = asyncPrompt()
     const p = prompt(message)
+    let result
 
     switch (returnedType) {
         case "arrayofstr":
-            result = util.strtoarray(p, "String")
+            result = strtoarray(p, "String")
             break;
         case "arrayofnumber":
-            result = util.strtoarray(p, "Number")
+            result = strtoarray(p, "Number")
             break;
         case "number":
-            result = util.strtonum(p)
+            result = strtonum(p)
             break;
         default:
             result = p
@@ -32,4 +34,4 @@ function prompt(message, returnedType) {
     return result
 }
 
-module.exports = prompt
+export default prompt
