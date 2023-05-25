@@ -1,6 +1,32 @@
-import { strtoarray } from "../util";
+import { strtotype, strtoarray } from "../util";
 
 describe("util", () => {
+  describe("strtotype", () => {
+    it("should convert string to dynamic type", () => {
+      expect(strtotype("foobar")).toEqual("foobar");
+    });
+
+    it("should convert string to dynamic type", () => {
+      expect(strtotype("123")).toEqual(123);
+    });
+
+    it("should convert string to string", () => {
+      expect(strtotype("foobar", "string")).toEqual("foobar");
+    });
+
+    it("should convert string to string", () => {
+      expect(strtotype("123", "string")).toEqual("123");
+    });
+
+    it("should convert string to number", () => {
+      expect(strtotype("foobar", "number")).toEqual(NaN);
+    });
+
+    it("should convert string to number", () => {
+      expect(strtotype("123", "number")).toEqual(123);
+    });
+  });
+
   describe("strtoarray", () => {
     it("should convert string to array of dynamic types", () => {
       expect(strtoarray("foo;bar;123", undefined, ";")).toEqual([

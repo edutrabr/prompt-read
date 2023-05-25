@@ -4,7 +4,7 @@
 // Author: Prof. Elmário Dutra
 // Version: 2021.03.24
 //
-import { strtoarray } from "./util.js";
+import { strtoarray, strtotype } from "./util.js";
 import asyncPrompt from "prompt-sync";
 
 /**
@@ -20,20 +20,8 @@ const prompt = (message, type, split) => {
 
   if (split) {
     return strtoarray(promptInput, type, split);
-  }
-
-  if (type === "number") {
-    return Number(promptInput);
-  }
-
-  if (type === "string") {
-    return promptInput;
-  }
-
-  if (/^[0-9]+$/.test(promptInput)) {
-    return Number(promptInput);
   } else {
-    return promptInput;
+    return strtotype(promptInput, type);
   }
 };
 
