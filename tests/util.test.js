@@ -1,19 +1,25 @@
-import { strtoarray, strtonum } from "../util"
+import { strtoarray } from "../util";
 
 describe("util", () => {
-    describe("strtoarray", () => {
-        it("should convert string to array of strings", () => {
-            expect(strtoarray("banana")).toEqual(["banana"])
-        })
+  describe("strtoarray", () => {
+    it("should convert string to array of dynamic types", () => {
+      expect(strtoarray("foo;bar;123", undefined, ";")).toEqual([
+        "foo",
+        "bar",
+        123,
+      ]);
+    });
 
-        it("should convert string to array of number", () => {
-            expect(strtoarray("1234", "Number")).toEqual([1234])
-        })
-    })
+    it("should convert string to array of string types", () => {
+      expect(strtoarray("foo;bar;123", "string", ";")).toEqual([
+        "foo",
+        "bar",
+        "123",
+      ]);
+    });
 
-    describe("strtonum", () => {
-        it('should convert string to number', () => {
-            expect(strtonum('1234')).toEqual(1234)
-        })
-    })
-})
+    it("should convert string to array of number types", () => {
+      expect(strtoarray("foo;bar;123", "number", ";")).toEqual([NaN, NaN, 123]);
+    });
+  });
+});
