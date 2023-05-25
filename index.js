@@ -16,7 +16,6 @@ import asyncPrompt from "prompt-sync";
  */
 const prompt = (message, type, split) => {
   const promptInput = asyncPrompt()(message);
-  if (type === "auto") type = undefined;
 
   if (split) {
     return strtoarray(promptInput, type, split);
