@@ -5,19 +5,37 @@
 // Version: 2021.03.08
 //
 
-// Function strtoarray
-// Convert strings to array of type
-const strtoarray = (str,type) => {
-    let result = str.split(" ")
-    
-    if (type == "Number") {
-        result = result.map(Number)
-    }
+/**
+ * Convert string into dynamic or fixed type value
+ * @param {string} str String that will be converted
+ * @param {"auto" | "string" | "number" | undefined} type Type of input that will be inserted (optional)
+ * @returns Converted value
+ */
+export const strtotype = (str, type) => {
+  switch (type) {
+    case "number":
+      return Number(str);
 
-    return result
-}
+    case "string":
+      return str;
 
-const strtonum = (str) => parseFloat(str)
+    default:
+      if (/^[0-9]+$/.test(str)) {
+        return Number(str);
+      } else {
+        return str;
+      }
+  }
+};
 
-
-export { strtoarray, strtonum }
+/**
+ * Convert string into array of dynamic values
+ * @param {string} str String that will be converted
+ * @param {string} split Split string into array
+ * @param {"auto" | "string" | "number" | undefined} type Type of input that will be inserted (optional)
+ * @returns Converted array
+ */
+export const strtoarray = (str, type, split) => {
+  let array = str.split(split);
+  return array.map((value) => strtotype(value, type));
+};
